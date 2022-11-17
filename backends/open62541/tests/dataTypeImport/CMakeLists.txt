@@ -1,17 +1,17 @@
 add_executable(enum enum.c)
-target_link_libraries(enum PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(enum PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 add_test(NAME enum_Test
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
     COMMAND enum ${CMAKE_CURRENT_SOURCE_DIR}/enum.xml)
 
 add_executable(padding padding.c)
-target_link_libraries(padding PRIVATE NodesetLoader open62541::open62541  ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(padding PRIVATE NodesetLoader ${OPEN62541_LIBRARIES}  ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 add_test(NAME padding_Test
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
     COMMAND padding)
 
 add_executable(subDataType subDataType.c)
-target_link_libraries(subDataType PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(subDataType PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 add_test(NAME subDataType_Test
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} 
     COMMAND subDataType ${CMAKE_CURRENT_SOURCE_DIR}/subDataType.xml)
@@ -28,7 +28,7 @@ if(${USE_MEMBERTYPE_INDEX})
 
     add_executable(compareDITypes compareDITypes.c ${UA_TYPES_DI_SOURCES})
     add_dependencies(compareDITypes open62541-generator-ns-di)
-    target_link_libraries(compareDITypes PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+    target_link_libraries(compareDITypes PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
     target_include_directories(compareDITypes PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
     add_test(NAME compareDITypes_Test
@@ -47,7 +47,7 @@ ua_generate_nodeset_and_datatypes(
 
 add_executable(compareStructTypes compareStructTypes.c ${UA_TYPES_STRUCT_SOURCES})
 add_dependencies(compareStructTypes open62541-generator-ns-struct)
-target_link_libraries(compareStructTypes PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(compareStructTypes PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 target_include_directories(compareStructTypes PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
 add_test(NAME compareStructTypes_Test
@@ -65,7 +65,7 @@ ua_generate_nodeset_and_datatypes(
 
 add_executable(compareStructExtended compareStructExtended.c ${UA_TYPES_STRUCTEXTENDED_SOURCES})
 add_dependencies(compareStructExtended open62541-generator-ns-structExtended)
-target_link_libraries(compareStructExtended PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(compareStructExtended PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 target_include_directories(compareStructExtended PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
 add_test(NAME compareStructExtended_Test
@@ -85,7 +85,7 @@ ua_generate_nodeset_and_datatypes(
 
 add_executable(compareStructSpecialized compareStructSpecialized.c ${UA_TYPES_SPECIALIZEDSTRUCT_SOURCES} ${UA_TYPES_STRUCT_SOURCES})
 add_dependencies(compareStructSpecialized open62541-generator-ns-specializedStruct)
-target_link_libraries(compareStructSpecialized PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(compareStructSpecialized PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 target_include_directories(compareStructSpecialized PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
 add_test(NAME compareStructSpecialized_Test
@@ -104,7 +104,7 @@ ua_generate_nodeset_and_datatypes(
 
 add_executable(compareOptionalStruct optionalStruct.c ${UA_TYPES_OPTIONALSTRUCT_SOURCES})
 add_dependencies(compareOptionalStruct open62541-generator-ns-optionalstruct)
-target_link_libraries(compareOptionalStruct PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(compareOptionalStruct PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 target_include_directories(compareOptionalStruct PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
 add_test(NAME compareOptionalStruct_Test
@@ -131,7 +131,7 @@ ua_generate_nodeset_and_datatypes(
 
 add_executable(compareAbstractDataTypeMember compareAbstractDataTypeMember.c ${UA_TYPES_ABSTRACTDATATYPEMEMBER_SOURCES})
 add_dependencies(compareAbstractDataTypeMember open62541-generator-ns-abstractdatatypemember)
-target_link_libraries(compareAbstractDataTypeMember PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+target_link_libraries(compareAbstractDataTypeMember PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
 target_include_directories(compareAbstractDataTypeMember PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
 add_test(NAME compareAbstractDataTypeMember_Test
@@ -141,7 +141,7 @@ add_test(NAME compareAbstractDataTypeMember_Test
 if(NOT ${USE_MEMBERTYPE_INDEX})
     add_executable(compareUnion union2.c ${UA_TYPES_UNION2_SOURCES})
     add_dependencies(compareUnion open62541-generator-ns-union2)
-    target_link_libraries(compareUnion PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+    target_link_libraries(compareUnion PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
     target_include_directories(compareUnion PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
     add_test(NAME compareUnion_Test
@@ -159,7 +159,7 @@ if(NOT ${USE_MEMBERTYPE_INDEX})
 
     add_executable(compareOptionset optionset.c ${UA_TYPES_OPTIONSET2_SOURCES})
     add_dependencies(compareOptionset open62541-generator-ns-optionset2)
-    target_link_libraries(compareOptionset PRIVATE NodesetLoader open62541::open62541 ${CHECK_LIBRARIES} ${PTHREAD_LIB})
+    target_link_libraries(compareOptionset PRIVATE NodesetLoader ${OPEN62541_LIBRARIES} ${CHECK_LIBRARIES} ${PTHREAD_LIB})
     target_include_directories(compareOptionset PRIVATE ${CMAKE_BINARY_DIR}/src_generated)
 
     add_test(NAME compareOptionset_Test
